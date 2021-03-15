@@ -1,14 +1,13 @@
-package com.example.contactspersistence.entity;
+package com.example.contactspersistence.domain.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Contact {
+    // todo : something going on with id - goes 1, 2, -45, -46..
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "contact_seq", sequenceName = "contact_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_seq")
     private Long id;
     private String firstName;
     private String lastName;
@@ -22,8 +21,6 @@ public class Contact {
     private Long age;
     private String employeeId;
 
-    Contact() {}
-
     public Contact(String firstName, String lastName, String occupation, String phoneNumber, String emailAddress, String dateOfBirth, Long salary, Long age, String employeeId) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +31,10 @@ public class Contact {
         this.salary = salary;
         this.age = age;
         this.employeeId = employeeId;
+    }
+
+    public Contact() {
+
     }
 
     public Long getId() {

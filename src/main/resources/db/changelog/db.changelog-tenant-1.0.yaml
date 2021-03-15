@@ -1,0 +1,46 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: contact
+      author: avasquez
+      changes:
+        - createSequence:
+            sequenceName: contact_seq
+            startValue: 1
+            incrementBy: 1
+        - createTable:
+            tableName: contact
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: contact_pkey
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: occupation
+                  type: VARCHAR(255)
+              - column:
+                  name: phone_number
+                  type: VARCHAR(255)
+              - column:
+                  name: email_address
+                  type: VARCHAR(255)
+              - column:
+                  name: date_of_birth
+                  type: VARCHAR(255)
+              - column:
+                  name: salary
+                  type: BIGINT
+              - column:
+                  name: age
+                  type: BIGINT
+              - column:
+                  name: employee_id
+                  type: VARCHAR(255)

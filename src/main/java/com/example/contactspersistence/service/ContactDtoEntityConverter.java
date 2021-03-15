@@ -1,6 +1,6 @@
 package com.example.contactspersistence.service;
 
-import com.example.contactspersistence.entity.Contact;
+import com.example.contactspersistence.domain.entity.Contact;
 import org.example.contact.dto.ContactDto;
 import org.example.contact.dto.NewContactDto;
 import org.modelmapper.ModelMapper;

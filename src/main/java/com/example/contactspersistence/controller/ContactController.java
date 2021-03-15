@@ -1,6 +1,6 @@
 package com.example.contactspersistence.controller;
 
-import com.example.contactspersistence.service.ContactService;
+import com.example.contactspersistence.service.ContactServiceImpl;
 import org.example.contact.dto.ContactDto;
 import org.example.contact.dto.NewContactDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,12 @@ import java.util.List;
 
 // TODO: null/empty checks
 @RestController
+@RequestMapping("/api")
 public class ContactController {
-    ContactService contactService;
+    ContactServiceImpl contactService;
 
     @Autowired
-    ContactController(ContactService contactService) {
+    ContactController(ContactServiceImpl contactService) {
         this.contactService = contactService;
     }
 
@@ -25,7 +26,7 @@ public class ContactController {
         System.out.println("Got a new contact!");
         System.out.println(newContactDto);
 
-        ContactDto createdContactDto = contactService.save(newContactDto);
+        ContactDto createdContactDto = contactService.create(newContactDto);
 
         URI uri = URI.create("/contact/" + createdContactDto.getContactId());
         return ResponseEntity.created(uri).body(createdContactDto);
